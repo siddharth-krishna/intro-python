@@ -128,6 +128,6 @@ Enter your guess: 66
 You guessed it! My number is 66.
 ```
 
-[Problem](https://py.checkio.org/en/mission/conversion-from-camelcase/): convert a string from CamelCase ("MyFunctionName") into the Python format, snake case ("my_function_name").
+[Problem](https://py.checkio.org/en/mission/conversion-from-camelcase/): convert a string from CamelCase (`MyFunctionName`) into the Python format, snake case (`my_function_name`).
 
-[Problem](https://py.checkio.org/en/mission/conversion-into-camelcase/): convert a string from the Python format, snake case ("my_function_name"), into CamelCase ("MyFunctionName").
+[Problem](https://py.checkio.org/en/mission/conversion-into-camelcase/): convert a string from the Python format, snake case (`my_function_name`), into CamelCase (`MyFunctionName`).

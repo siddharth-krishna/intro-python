@@ -1,7 +1,9 @@
 # Introduction to Programming with Python
 
 1. [Basics: variables, assignment, lists](basics.md)
-2. [Control flow: if-else, loops](control.md)
+1. [Control flow: if-else, loops](control.md)
+1. [Strings and user input](strings.md)
+1. [Functions](functions.md)
 
 **TODO** add sources to problems
 
