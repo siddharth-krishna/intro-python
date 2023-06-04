@@ -25,7 +25,7 @@
   </style>
 </head>
 
-<body>
+<body class="markdown-body">
   <script type="text/javascript">
     // output functions are configurable.  This one just appends some text
     // to a pre element.
@@ -49,7 +49,7 @@
       var mypre = document.getElementById("output");
       mypre.innerHTML = '';
       Sk.pre = "output";
-      Sk.configure({ output: outf, read: builtinRead });
+      Sk.configure({ output: outf, read: builtinRead, __future__: Sk.python3 });
       (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
       var myPromise = Sk.misceval.asyncToPromise(function () {
         return Sk.importMainWithBody("<stdin>", false, prog, true);
@@ -63,25 +63,23 @@
     }
   </script>
 
-  <article class="markdown-body">
-    <h2>PyDojo</h2>
-    <h3>Problem: Sum of 1 to n</h3>
-    <p>
-      Write a function <code>sum_to(n)</code> that adds up all the numbers from <code>1</code> up to <code>n</code>.
-      If you call <code>sum_to(10)</code>, for example, it should return <code>55</code>.
-    </p>
-    <form>
-      <!-- TODO stop caching of textarea contents when problem changes? -->
-      <textarea id="yourcode" cols="40" rows="10">
+  <h2>PyDojo</h2>
+  <h3>Problem: Sum of 1 to n</h3>
+  <p>
+    Write a function <code>sum_to(n)</code> that adds up all the numbers from <code>1</code> up to <code>n</code>.
+    If you call <code>sum_to(10)</code>, for example, it should return <code>55</code>.
+  </p>
+  <form>
+    <!-- TODO stop caching of textarea contents when problem changes? -->
+    <textarea id="yourcode" cols="40" rows="10">
 def sum_to(n):
     # Your code goes here
 
 print(sum_to(10))  # Expected: 55
 </textarea><br />
-      <button type="button" onclick="runit()">Run</button>
-    </form>
-    <pre id="output"></pre>
-  </article>
+    <button type="button" onclick="runit()">Run</button>
+  </form>
+  <pre id="output"></pre>
 
 </body>
 
