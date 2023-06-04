@@ -39,18 +39,12 @@
       return Sk.builtinFiles["files"][x];
     }
 
-    // Here's everything you need to run a python program in skulpt
-    // grab the code from your textarea
-    // get a reference to your pre element for output
-    // configure the output function
-    // call Sk.importMainWithBody()
-    function runit() {
+    // Run code using Skulpt
+    function runIt() {
       var prog = document.getElementById("yourcode").value;
-      var mypre = document.getElementById("output");
-      mypre.innerHTML = '';
+      document.getElementById("output").innerHTML = '';
       Sk.pre = "output";
       Sk.configure({ output: outf, read: builtinRead, __future__: Sk.python3 });
-      (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
       var myPromise = Sk.misceval.asyncToPromise(function () {
         return Sk.importMainWithBody("<stdin>", false, prog, true);
       });
@@ -59,11 +53,35 @@
       },
         function (err) {
           console.log(err.toString());
-          var mypre = document.getElementById("output");
           var container = document.createElement("span");
           container.appendChild(document.createTextNode(err));
           container.style.color = "red";
-          mypre.appendChild(container);
+          document.getElementById("output").appendChild(container);
+        });
+    }
+
+    // Run tests and provide feedback
+    function submitIt() {
+      var prog = document.getElementById("yourcode").value;
+      var tests = document.getElementById("unittests").value;
+      document.getElementById("output").innerHTML = '';
+      Sk.pre = "output";
+      Sk.configure({ output: outf, read: builtinRead, __future__: Sk.python3 });
+      var myPromise = Sk.misceval.asyncToPromise(function () {
+        return Sk.importMainWithBody("<stdin>", false, prog + '\n' + tests, true);
+      });
+      myPromise.then(function (mod) {
+        var results = document.getElementById("yourresults");
+        results.innerHTML = results.innerHTML + "Congratulations! Problem solved successfully.";
+        results.style.color = "green";
+        console.log('success');
+      },
+        function (err) {
+          console.log(err.toString());
+          var container = document.createElement("span");
+          container.appendChild(document.createTextNode(err));
+          container.style.color = "red";
+          document.getElementById("output").appendChild(container);
         });
     }
   </script>
@@ -82,7 +100,14 @@ def sum_to(n):
 
 print(sum_to(10))  # Expected: 55
 </textarea><br />
-    <button type="button" onclick="runit()">Run</button>
+    <textarea id="unittests" style="display: none;">
+tests = [(n, sum(range(n+1))) for n in [0,10,15,100,98765]]
+for n, ans in tests:
+    assert ans == sum_to(n), f"sum_to({n}) was {sum_to(n)}, expected {ans}"
+</textarea><br />
+    <button type="button" onclick="runIt()">Run</button>&nbsp;
+    <button type="button" onclick="submitIt()">Submit</button>&nbsp;
+    <span id="yourresults"></span>
   </form>
   <pre id="output"></pre>
 
