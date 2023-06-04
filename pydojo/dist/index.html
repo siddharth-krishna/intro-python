@@ -59,6 +59,11 @@
       },
         function (err) {
           console.log(err.toString());
+          var mypre = document.getElementById("output");
+          var container = document.createElement("span");
+          container.appendChild(document.createTextNode(err));
+          container.style.color = "red";
+          mypre.appendChild(container);
         });
     }
   </script>
