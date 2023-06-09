@@ -66,7 +66,7 @@ print(sum_to(10))  # Expected: 55
     <textarea id="unittests" style="display: none;">
 tests = [(n, sum(range(n+1))) for n in [0,10,15,100,98765]]
 for n, ans in tests:
-    assert ans == sum_to(n), f"sum_to({n}) was {sum_to(n)}, expected {ans}"
+    assert ans == sum_to(n), f"sum_to({n}) should be {ans} but was {sum_to(n)}"
 </textarea><br />
     <button type="button" onclick="runIt()">Run</button>&nbsp;
     <button type="button" onclick="submitIt()">Submit</button>&nbsp;
