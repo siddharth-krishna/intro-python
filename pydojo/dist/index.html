@@ -2,15 +2,21 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
-  <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism.min.css"
     integrity="sha512-/mZ1FHPkg6EKcxo0fKXF51ak6Cr2ocgDi5ytaTBjsQZIH/RNs6GF6+oId/vPe3eJB836T36nXwVh/WBl/cWT4w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css"
     integrity="sha512-Ya9H+OPj8NgcQk34nCrbehaA0atbzGdZCI2uCbqVRELgnlrh8vQ2INMnkadVMSniC54HChLIh5htabVuKJww8g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-core.min.js"
+    integrity="sha512-x0aNx8s5fNTSk7iaTiSuUtz6vbT7gtGjk+Dotp17u4TmUEbJUwNMUFKxMBlnMQ1+N8E5exPHvRcF1yoxJ8b/iA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-python.min.js"
+    integrity="sha512-3qtI9+9JXi658yli19POddU1RouYtkTEhTHo6X5ilOvMiDfNvo6GIS6k2Ukrsx8MyaKSXeVrnIWeyH8G5EOyIQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <style>
     .markdown-body {
       box-sizing: border-box;
@@ -43,64 +49,6 @@
 </head>
 
 <body class="markdown-body">
-  <script type="text/javascript">
-
-    function outf(text) {
-      var mypre = document.getElementById("output");
-      mypre.innerHTML = mypre.innerHTML + text;
-    }
-
-    function builtinRead(x) {
-      if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
-        throw "File not found: '" + x + "'";
-      return Sk.builtinFiles["files"][x];
-    }
-
-    // Run code using Skulpt
-    function runIt() {
-      document.getElementById("output").innerHTML = '';
-      Sk.pre = "output";
-      Sk.configure({ output: outf, read: builtinRead, __future__: Sk.python3 });
-      var myPromise = Sk.misceval.asyncToPromise(function () {
-        return Sk.importMainWithBody("<stdin>", false, jar.toString(), true);
-      });
-      myPromise.then(function (mod) {
-        console.log('success');
-      },
-        function (err) {
-          console.log(err.toString());
-          var container = document.createElement("span");
-          container.appendChild(document.createTextNode(err));
-          container.style.color = "red";
-          document.getElementById("output").appendChild(container);
-        });
-    }
-
-    // Run tests and provide feedback
-    function submitIt() {
-      var tests = document.getElementById("unittests").value;
-      document.getElementById("output").innerHTML = '';
-      Sk.pre = "output";
-      Sk.configure({ output: outf, read: builtinRead, __future__: Sk.python3 });
-      var myPromise = Sk.misceval.asyncToPromise(function () {
-        return Sk.importMainWithBody("<stdin>", false, jar.toString() + '\n' + tests, true);
-      });
-      myPromise.then(function (mod) {
-        var results = document.getElementById("yourresults");
-        results.innerHTML = results.innerHTML + "Congratulations! Problem solved successfully.";
-        results.style.color = "green";
-        console.log('success');
-      },
-        function (err) {
-          console.log(err.toString());
-          var container = document.createElement("span");
-          container.appendChild(document.createTextNode(err));
-          container.style.color = "red";
-          document.getElementById("output").appendChild(container);
-        });
-    }
-  </script>
-
   <h2>PyDojo</h2>
   <h3>Problem: Sum of 1 to n</h3>
   <p>
@@ -128,22 +76,7 @@ for n, ans in tests:
 
   <script src="codejar.min.js" type="text/javascript"></script>
   <script src="linenumbers.min.js" type="text/javascript"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-core.min.js"
-    integrity="sha512-x0aNx8s5fNTSk7iaTiSuUtz6vbT7gtGjk+Dotp17u4TmUEbJUwNMUFKxMBlnMQ1+N8E5exPHvRcF1yoxJ8b/iA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-python.min.js"
-    integrity="sha512-3qtI9+9JXi658yli19POddU1RouYtkTEhTHo6X5ilOvMiDfNvo6GIS6k2Ukrsx8MyaKSXeVrnIWeyH8G5EOyIQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script type="text/javascript">
-    let jar = CodeJar(document.querySelector(".editor"), withLineNumbers(Prism.highlightElement, {
-      color: '#000',
-      backgroundColor: 'rgb(232, 232, 232)'
-    }), {
-      tab: ' '.repeat(4),
-      indentOn: /[:(\[]$/,
-    });
-    jar.updateCode(document.getElementById("defaultcode").value);
-  </script>
+  <script src="index.js" type="text/javascript"></script>
 </body>
 
 </html>
