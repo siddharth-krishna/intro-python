@@ -1,7 +1,11 @@
+<!-- @format -->
+
+{% load static %}
 <html>
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism.min.css"
     integrity="sha512-/mZ1FHPkg6EKcxo0fKXF51ak6Cr2ocgDi5ytaTBjsQZIH/RNs6GF6+oId/vPe3eJB836T36nXwVh/WBl/cWT4w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -34,8 +38,9 @@
 
     .editor {
       border-radius: 6px;
-      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-      font-family: 'Source Code Pro', monospace;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      font-family: "Source Code Pro", monospace;
       font-size: 14px;
       font-weight: 400;
       height: 340px;
@@ -52,18 +57,19 @@
   <h2>PyDojo</h2>
   <h3>Problem: Sum of 1 to n</h3>
   <p>
-    Write a function <code>sum_to(n)</code> that adds up all the numbers from <code>1</code> up to <code>n</code>.
-    If you call <code>sum_to(10)</code>, for example, it should return <code>55</code>.
+    Write a function <code>sum_to(n)</code> that adds up all the numbers from
+    <code>1</code> up to <code>n</code>. If you call <code>sum_to(10)</code>,
+    for example, it should return <code>55</code>.
   </p>
   <form>
-    <div class="editor language-python"> </div>
-    <textarea id="defaultcode" style="display: none;">
+    <div class="editor language-python"></div>
+    <textarea id="defaultcode" style="display: none">
 def sum_to(n):
     # Your code goes here
 
 print(sum_to(10))  # Expected: 55
 </textarea><br />
-    <textarea id="unittests" style="display: none;">
+    <textarea id="unittests" style="display: none">
 tests = [(n, sum(range(n+1))) for n in [0,10,15,100,98765]]
 for n, ans in tests:
     assert ans == sum_to(n), f"sum_to({n}) should be {ans} but was {sum_to(n)}"
@@ -74,9 +80,10 @@ for n, ans in tests:
   </form>
   <pre id="output"></pre>
 
-  <script src="codejar.min.js" type="text/javascript"></script>
-  <script src="linenumbers.min.js" type="text/javascript"></script>
-  <script src="index.js" type="text/javascript"></script>
+  <script src=" {% static 'js/codejar.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/codejar.min.js' %}" type="text/javascript"></script>
+  <script src=" {% static 'js/linenumbers.min.js' %}" type="text/javascript"></script>
+  <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 </body>
 
 </html>
