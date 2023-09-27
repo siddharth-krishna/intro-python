@@ -103,6 +103,5 @@ function showProblem(problem) {
   problemListPage.style.display = "none";
   problemPage.style.display = "";
 }
-// TODO add back button
 // TODO add status
 // TODO save progress in local storage
