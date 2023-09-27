@@ -95,10 +95,14 @@ function showProblemList() {
 }
 
 function showProblem(problem) {
+  // Show problem:
   document.getElementById("problem-title").innerHTML = problem.title;
   document.getElementById("problem-description").innerHTML = problem.description;
   document.getElementById("problem-unittests").innerHTML = problem.unittests;
   jar.updateCode(problem.defaultcode);
+  // Clear output and results:
+  document.getElementById("problem-output").innerHTML = '';
+  document.getElementById("problem-results").innerHTML = '';
   // Hide problem list and show problem & editor
   problemListPage.style.display = "none";
   problemPage.style.display = "";
