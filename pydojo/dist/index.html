@@ -57,6 +57,10 @@
       text-indent: -1em;
     }
 
+    #problem-ul li:hover {
+      background-color: rgb(246, 248, 250);
+    }
+
     li.problem-unsolved::before {
       content: "⏹ ";
       padding-right: 5px;
@@ -84,7 +88,7 @@
     <form>
       <div class="editor language-python"> </div>
       <button type="button" onclick="runIt()">Run</button>&nbsp;
-      <button type="button" onclick="submitIt()">Submit</button>&nbsp;
+      <button type="button" id="submit-button">Submit</button>&nbsp;
       <span id="problem-results"></span>
     </form>
     <pre id="problem-output"></pre>
