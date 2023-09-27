@@ -82,11 +82,15 @@ const problemTable = document.getElementById("problem-table");
 // Generate the list of problems from problemset:
 for (const problem of problemset) {
   let tableRef = problemTable.getElementsByTagName("tbody")[0];
-  let newRow = tableRef.insertRow();
-  newRow.insertCell();
-  let newCell = newRow.insertCell();
-  newCell.innerHTML = problem.title;
-  newCell.onclick = function() {showProblem(problem)};
+  let row = tableRef.insertRow();
+  let rowStatus = row.insertCell();
+  rowStatus.innerHTML = "&#9209; &#9989;";
+  let rowName = row.insertCell();
+  let link = document.createElement("a");
+  link.innerHTML = problem.title;
+  link.href = "#";
+  link.onclick = function () { showProblem(problem) };
+  rowName.appendChild(link);
 }
 
 function showProblemList() {
