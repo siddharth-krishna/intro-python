@@ -77,20 +77,18 @@ const problemset = [
 
 const problemPage = document.getElementById("problem");
 const problemListPage = document.getElementById("problem-list");
-const problemTable = document.getElementById("problem-table");
+const problemList = document.getElementById("problem-ul");
 
 // Generate the list of problems from problemset:
 for (const problem of problemset) {
-  let tableRef = problemTable.getElementsByTagName("tbody")[0];
-  let row = tableRef.insertRow();
-  let rowStatus = row.insertCell();
-  rowStatus.innerHTML = "&#9209; &#9989;";
-  let rowName = row.insertCell();
+  let li = document.createElement("li");
   let link = document.createElement("a");
   link.innerHTML = problem.title;
   link.href = "#";
   link.onclick = function () { showProblem(problem) };
-  rowName.appendChild(link);
+  li.appendChild(link);
+  li.classList.add(Math.random < 0.5 ? "problem-solved" : "problem-unsolved");
+  problemList.appendChild(li);
 }
 
 function showProblemList() {

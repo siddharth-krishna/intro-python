@@ -45,6 +45,27 @@
       tab-size: 4;
       width: 85%;
     }
+
+    #problem-ul {
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    #problem-ul li {
+      padding-left: 1em;
+      text-indent: -1em;
+    }
+
+    li.problem-unsolved::before {
+      content: "⏹ ";
+      padding-right: 5px;
+    }
+
+    li.problem-solved::before {
+      content: "✅ ";
+      padding-right: 5px;
+    }
   </style>
 </head>
 
@@ -52,15 +73,7 @@
   <h2>PyDojo</h2>
   <div id="problem-list">
     <h3>Problems</h3>
-    <table id="problem-table">
-      <thead>
-        <tr>
-          <td>Status</td>
-          <td>Problem</td>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <ul id="problem-ul"> </ul>
   </div>
   <div id="problem" style="display: none;">
     <a href="#" onclick="showProblemList()">&#8678; Back to All Problems</a>
