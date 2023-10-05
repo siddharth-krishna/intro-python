@@ -69,13 +69,6 @@ let jar = CodeJar(document.querySelector(".editor"), withLineNumbers(Prism.highl
 });
 jar.updateCode("");
 
-// Database of problems:
-// id, title, description, defaultcode, unittests
-const problemset = [
-  { id: "SumN", title: "Sum from <code>1</code> to <code>n</code>", description: "<p> Write a function <code>sum_to(n)</code> that adds up all the numbers from <code>1</code> up to <code>n</code>. If you call <code>sum_to(10)</code>, for example, it should return <code>55</code>. </p>", defaultcode: "def sum_to(n):\n    # Your code goes here\n\nprint(sum_to(10))  # Expected: 55", unittests: "tests = [(n, sum(range(n+1))) for n in [0,10,15,100,98765]]\nfor n, ans in tests:\n    assert ans == sum_to(n), f'sum_to({n}) should be {ans} but was {sum_to(n)}'\n" },
-  { id: "SumEven", title: "Sum even numbers", description: "<p> Write a function <code>sum_evens(n)</code> that adds up all the <i>even</i> numbers from <code>1</code> up to <code>n</code>. If you call <code>sum_evens(10)</code>, for example, it should return <code>2+4+6+8+10=30</code>. </p>", defaultcode: "def sum_evens(n):\n    # Your code goes here\n\nprint(sum_evens(10))  # Expected: 30", unittests: "tests = [(n, sum(range(0,n+1,2))) for n in [0,10,15,100,98765]]\nfor n, ans in tests:\n    assert ans == sum_evens(n), f'sum_evens({n}) should be {ans} but was {sum_evens(n)}'\n" },
-]
-
 // Ensure problem IDs are distinct:
 const problemIds = new Set();
 for (const problem of problemset) {
