@@ -36,15 +36,14 @@ function runIt() {
 }
 
 // Run tests and provide feedback
-function submitIt(id) {
-  var tests = document.getElementById("problem-unittests").value;
+function submitIt(problem) {
   document.getElementById("problem-output").innerHTML = '';
-  runPy(jar.toString() + '\n' + tests,
+  runPy(jar.toString() + '\n' + problem.unittests,
     function (mod) {
       var results = document.getElementById("problem-results");
       results.innerHTML = "Congratulations! Problem solved successfully.";
       results.style.color = "green";
-      setProblemSolved(id, true);
+      setProblemSolved(problem.id, true);
       console.log('Skulpt: program executed successfully');
     },
     function (err) {
@@ -155,10 +154,9 @@ function showProblem(problem) {
   // Show problem:
   document.getElementById("problem-title").innerHTML = problem.title;
   document.getElementById("problem-description").innerHTML = problem.description;
-  document.getElementById("problem-unittests").innerHTML = problem.unittests;
   jar.updateCode(problem.defaultcode);
   // Setup submit button:
-  document.getElementById("submit-button").onclick = function () { submitIt(problem.id) };
+  document.getElementById("submit-button").onclick = function () { submitIt(problem) };
   // Clear output and results:
   document.getElementById("problem-output").innerHTML = '';
   document.getElementById("problem-results").innerHTML = '';
