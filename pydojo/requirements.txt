@@ -1,2 +1,2 @@
 markdown2
-pyparser
+pyparsing
