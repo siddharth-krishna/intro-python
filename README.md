@@ -1,5 +1,16 @@
 # Introduction to Programming with Python
 
+This repo contains some notes from a class I taught on Python, along with a static web app I made for solving Python problems in your browser.
+
+## PyDojo
+
+A static web app (frontend only, works offline, small footprint) for solving Python programming exercises in your browser:
+https://pydojo.onrender.com/
+
+[Source code](pydojo/)
+
+## Notes
+
 1. [Basics: variables, assignment, lists](basics.md)
 1. [Control flow: if-else, loops](control.md)
 1. [Strings and user input](strings.md)
