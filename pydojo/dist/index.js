@@ -35,27 +35,49 @@ function runIt() {
     });
 }
 
+function showProblemSolved(problem) {
+  var results = document.getElementById("problem-results");
+  results.innerHTML = "Congratulations! Problem solved successfully.";
+  results.style.color = "green";
+  setProblemSolved(problem.id, true);
+}
+
+function showProblemFailed(err) {
+  console.log(err.toString());
+  var results = document.getElementById("problem-results");
+  results.innerHTML = "Sorry, your code is incorrect. See error below:";
+  results.style.color = "red";
+  var container = document.createElement("span");
+  container.appendChild(document.createTextNode(err));
+  container.style.color = "red";
+  document.getElementById("problem-output").appendChild(container);
+}
+
 // Run tests and provide feedback
 function submitIt(problem) {
   document.getElementById("problem-output").innerHTML = '';
-  runPy(jar.toString() + '\n' + problem.unittests,
-    function (mod) {
-      var results = document.getElementById("problem-results");
-      results.innerHTML = "Congratulations! Problem solved successfully.";
-      results.style.color = "green";
-      setProblemSolved(problem.id, true);
-      console.log('Skulpt: program executed successfully');
-    },
-    function (err) {
-      console.log(err.toString());
-      var results = document.getElementById("problem-results");
-      results.innerHTML = "Sorry, your code is incorrect. See error below:";
-      results.style.color = "red";
-      var container = document.createElement("span");
-      container.appendChild(document.createTextNode(err));
-      container.style.color = "red";
-      document.getElementById("problem-output").appendChild(container);
-    });
+  if ("expectedans" in problem) {
+    // Run program and check that answer matches expected
+    runPy(jar.toString(),
+      function (mod) {
+        var output = document.getElementById("problem-output");
+        if (output.innerText == problem.expectedans)
+          showProblemSolved(problem)
+        else
+          showProblemFailed(
+            "Your program output was not the same as the correct output:\n"
+            + problem.expectedans
+          );
+      },
+      showProblemFailed
+    );
+  } else {
+    // Run unit tests on program and check no errors
+    runPy(jar.toString() + '\n' + problem.unittests,
+      showProblemSolved,
+      showProblemFailed
+    );
+  }
 }
 
 // Setup CodeJar editor:

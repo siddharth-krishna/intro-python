@@ -9,6 +9,44 @@ for code blocks in the language `defaultcode`, `unittests`, or `expectedans`
 
 -->
 
+<!-- Basics: -->
+
+# Print: Hello, World!
+
+A program in Python is a list of lines, and each line (or *statement*) tells the computer to do something.
+
+Let's start with the `print` statement. It tells the computer to print out a line. For example, this program:
+```python
+print("Hello")
+```
+when run, will print:
+```
+Hello
+```
+
+`print` is a *function*, and the program above is calling the function with the *argument* `"Hello"`. The argument is inside double quotes `"` because it is a line of text that can have spaces in it, called a *string*. Some other strings are `"Goodbye"`, `"Python rocks"`, and `"In 2 years I will have 20,000 sheep"`.
+
+If you call `print` with another string as argument, it will print that string instead. Here is your first problem: the box below contains a Python program that prints `Goodbye`, which you can run by clicking on the `Run` button, can you change the program to print `Hello, World!` instead? When you are done, try clicking `Submit`.
+
+```defaultcode
+print("Goodbye")
+```
+
+```expectedans
+Hello, World!
+```
+
+<!--
+Next: variables
+print variables
+order of assignment
+print expressions
+function that prints
+function argument (how to test?)
+function return value
+-->
+
+
 <!-- Basic functions: -->
 
 # Plus2: Add two to a number
