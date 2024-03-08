@@ -157,4 +157,61 @@ indentation: inside vs outside loop
 indentation: inside vs outside if
 
 Look through all stdlib list and string functions and make problems with them
+
+'''
+x = 3
+x = 2
+print(x)
+x = 2
+x = 3
+y = x
+print(y)
+
+def foo():
+    print(3)
+    print(4)
+    return
+print(5)
+foo()
+foo()
+
+# comment
+
+def list_get(l, i):
+    
+    l=[4]
+    i=[2]
+
+list_get([3,4,5], 2)  # 4
+list_get([3,4,5], 3)  # 5
+
+def foo(x):
+    print(x + 3)
+
+foo(5)
+foo(7)
+
+x = 3
+print(x + 1)
+x = 6
+print(x + 1)
+
+def plus_one(x):
+    print(x + 1)
+plus_one(3)
+plus_one(6)
+
+def double(x):
+    print(x + 5)
+
+double(5) # 10
+double(7) # 14
+
+'''
+
+def double(x):
+    print(x + x)
+   
+double(5) # 10
+double(7) # 14
 -->
