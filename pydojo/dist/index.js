@@ -65,8 +65,7 @@ function submitIt(problem) {
           showProblemSolved(problem)
         else
           showProblemFailed(
-            "Your program output was not the same as the correct output:\n"
-            + problem.expectedans
+            "Your program output was not the same as the correct output"
           );
       },
       showProblemFailed

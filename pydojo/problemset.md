@@ -19,7 +19,7 @@ Let's start with the `print` statement. It tells the computer to print out a lin
 ```python
 print("Hello")
 ```
-when run, will print:
+when run, the output will be:
 ```
 Hello
 ```
@@ -36,9 +36,46 @@ print("Goodbye")
 Hello, World!
 ```
 
+# Vars: Variables
+
+In Python, you can store a value in a variable if you want to use it later by name. For example, this program creates two variables `x` and `y` and stores in them the numbers `2` and `3`:
+```python
+x = 2
+y = 3
+```
+
+You can also make Python do some calculations for you when setting a variable, and use print to see the answer:
+```python
+teams = 20
+players_per_team = 25
+referees = 5
+total_people_in_league = teams * players_per_team + referees
+print(total_people_in_league)
+```
+This program's output will be `20 * 25 + 5`, which is:
+```
+505
+```
+
+Can you modify the program below to calculate how much money you would make if you sold 13 balls at 37 dollars each and 19 shirts at 71 dollars each?
+```defaultcode
+num_balls = 13
+price_per_ball = 37
+num_shirts = 19
+price_per_shirt = 71
+total_money = # CHANGE this line to calculate the right answer
+print(total_money)
+```
+
+```expectedans
+1830
+```
+
+# AsgnOrder: Order 
+
+
 <!--
-Next: variables
-print variables
+Next:
 order of assignment
 print expressions
 function that prints
